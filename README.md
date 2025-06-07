@@ -3,7 +3,7 @@
 
 ## 🚀 Live Demo
 
-[Click for demo!](https://kirbyzee.github.io/Obscura_website/)
+[Click for demo!](https://kirbyzee.github.io/Obscura_Website/)
 
 ## 🔒 Important Notice
 
