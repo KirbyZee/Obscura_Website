@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Obscura - Offline. Encrypted. Yours.</title>
+    <link rel="icon" type="image/png" href="public/images/favicon.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="public/images/favicon.png" sizes="16x16">
+    <link rel="shortcut icon" href="public/images/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body class="gradient-bg text-white overflow-x-hidden">
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="text-center">
+            <div class="lock-animation">
+                <div class="lock-shackle"></div>
+                <div class="lock-body"></div>
+            </div>
+            <p class="text-purple-300 mt-4 text-lg">Initializing Obscura...</p>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-slate-900/90 backdrop-blur-sm z-50 border-b border-purple-900/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-gradient-to-br from-purple-500 to-purple-700 rounded-lg flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                        </svg>
+                    </div>
+                    <span class="text-2xl font-bold text-white">Obscura</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link text-gray-300 hover:text-white px-3 py-2">Home</a>
+                    <a href="#features" class="nav-link text-gray-300 hover:text-white px-3 py-2">Features</a>
+                   <a href="#download" class="nav-link text-gray-300 hover:text-white px-3 py-2">Coming soon!</a>
+                    <a href="#about" class="nav-link text-gray-300 hover:text-white px-3 py-2">About</a>
+                    <a href="#bug-report" class="nav-link text-gray-300 hover:text-white px-3 py-2">Report Bug</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobileMenuToggle" class="text-gray-300 hover:text-white">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobileMenu" class="hidden md:hidden bg-slate-800/95 backdrop-blur-sm">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="#home" class="block px-3 py-2 text-gray-300 hover:text-white">Home</a>
+                <a href="#features" class="block px-3 py-2 text-gray-300 hover:text-white">Features</a>
+                <a href="#download" class="block px-3 py-2 text-gray-300 hover:text-white">Coming soon!</a>
+                <a href="#about" class="block px-3 py-2 text-gray-300 hover:text-white">About</a>
+                <a href="#bug-report" class="block px-3 py-2 text-gray-300 hover:text-white">Report Bug</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center pt-20 relative overflow-hidden">
+        <!-- Background image/pattern -->
+        <div class="absolute inset-0 z-0">
+            <div class="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-900/95 to-purple-900/20"></div>
+            <div class="absolute inset-0 bg-[url('public/images/grid-pattern.png')] opacity-10 bg-repeat"></div>
+        </div>
+
+        <!-- Floating elements -->
+        <div class="absolute inset-0 overflow-hidden pointer-events-none">
+            <div class="absolute top-1/4 -left-12 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-1/3 -right-12 w-96 h-96 bg-purple-700/10 rounded-full blur-3xl"></div>
+        </div>
+
+        <!-- Main content -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center lg:flex lg:items-center lg:gap-12">
+                <!-- Left side content -->
+                <div class="lg:w-1/2 lg:text-left">
+                    <div class="fade-in mb-8">
+                        <div class="w-32 h-32 bg-gradient-to-br from-purple-500 to-purple-700 rounded-3xl mx-auto lg:mx-0 mb-8 flex items-center justify-center purple-glow">
+                            <svg class="w-20 h-20 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="fade-in">
+                        <h1 class="text-6xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-purple-400 to-purple-600 bg-clip-text text-transparent">
+                            Obscura
+                        </h1>
+                    </div>
+                    <div class="fade-in">
+                        <p class="text-2xl md:text-3xl text-gray-300 mb-8 font-light">
+                            Offline. Encrypted. <span class="text-purple-400 font-medium">Yours.</span>
+                        </p>
+                    </div>
+                    <div class="fade-in">
+                        <p class="text-lg md:text-xl text-gray-400 mb-12 max-w-xl lg:mx-0 mx-auto leading-relaxed">
+                            Take control of your digital security with a password manager that never leaves your device. 
+                            No cloud storage, no data collection, no compromises.
+                        </p>
+                    </div>
+                    <div class="fade-in">
+                        <a href="#download" class="inline-flex items-center px-8 py-4 text-lg font-semibold text-white bg-gradient-to-r from-purple-600 to-purple-700 rounded-full hover:from-purple-700 hover:to-purple-800 transition-all duration-300 transform hover:scale-105 purple-glow">
+                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                            </svg>
+                            Download Obscura
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right side mockup -->
+                <div class="lg:w-1/2 mt-12 lg:mt-0">
+                    <div class="fade-in relative">
+                        <div class="relative z-10 transform hover:scale-105 transition-transform duration-300">
+                            <img src="public/images/mockup.png" alt="Obscura App Interface" class="rounded-2xl shadow-2xl border border-purple-500/20">
+                            <div class="absolute inset-0 rounded-2xl bg-gradient-to-tr from-purple-500/10 to-transparent pointer-events-none"></div>
+                        </div>
+                        <!-- Decorative elements -->
+                        <div class="absolute -inset-4 bg-gradient-to-tr from-purple-500/20 to-transparent blur-2xl opacity-30 rounded-full"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-slate-900/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="fade-in text-4xl md:text-5xl font-bold mb-6 text-white">Why Choose Obscura?</h2>
+                <p class="fade-in text-xl text-gray-400 max-w-3xl mx-auto">
+                    Built with privacy and security as core principles, not afterthoughts.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+                <div class="feature-card slide-in-left bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-purple-900/30">
+                    <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-700 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-4 text-white">End-to-End Encryption</h3>
+                    <p class="text-gray-400 leading-relaxed">Military-grade AES-256 encryption ensures your passwords are unreadable even if your device is compromised.</p>
+                </div>
+
+                <div class="feature-card fade-in bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-purple-900/30">
+                    <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-700 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192L5.636 18.364M12 12h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-4 text-white">100% Offline</h3>
+                    <p class="text-gray-400 leading-relaxed">No internet connection required. Your data never leaves your device, ensuring complete privacy and security.</p>
+                </div>
+
+                <div class="feature-card slide-in-right bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-purple-900/30">
+                    <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-700 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-4 text-white">Zero Knowledge</h3>
+                    <p class="text-gray-400 leading-relaxed">We can't see your passwords even if we wanted to. Your master password is known only to you.</p>
+                </div>
+
+                <div class="feature-card slide-in-left bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-purple-900/30">
+                    <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-700 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-4 text-white">Open Source</h3>
+                    <p class="text-gray-400 leading-relaxed">Full transparency with open-source code. Audit our security practices and contribute to the community.</p>
+                </div>
+
+                <div class="feature-card fade-in bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-purple-900/30">
+                    <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-700 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-4 text-white">Lightning Fast</h3>
+                    <p class="text-gray-400 leading-relaxed">Native performance with instant search and autofill. No web-based slowdowns or connection delays.</p>
+                </div>
+
+                <div class="feature-card slide-in-right bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-purple-900/30">
+                    <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-700 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-4 text-white">Desktop Support</h3>
+                    <p class="text-gray-400 leading-relaxed">Available on Windows, macOS, and Linux. Your secure password vault for all major desktop platforms.</p>
+                </div>
+            </div>
+
+            <!-- Why Offline Section -->
+            <div class="bg-gradient-to-r from-purple-900/30 to-purple-800/30 rounded-3xl p-8 md:p-12 border border-purple-700/50">
+                <div class="text-center mb-8">
+                    <h3 class="fade-in text-3xl md:text-4xl font-bold mb-4 text-white">Why Offline Matters</h3>
+                    <p class="fade-in text-lg text-gray-300 max-w-4xl mx-auto">
+                        In an age of constant data breaches and privacy violations, keeping your passwords offline isn't just smart—it's essential.
+                    </p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="slide-in-left text-center">
+                        <div class="text-4xl mb-4">🛡️</div>
+                        <h4 class="text-xl font-semibold mb-3 text-white">Breach Immunity</h4>
+                        <p class="text-gray-400">If there's no server, there's nothing to hack. Your data can't be stolen from the cloud because it's not there.</p>
+                    </div>
+                    <div class="fade-in text-center">
+                        <div class="text-4xl mb-4">🔒</div>
+                        <h4 class="text-xl font-semibold mb-3 text-white">True Privacy</h4>
+                        <p class="text-gray-400">No tracking, no analytics, no data collection. Your passwords are yours alone, always.</p>
+                    </div>
+                    <div class="slide-in-right text-center">
+                        <div class="text-4xl mb-4">⚡</div>
+                        <h4 class="text-xl font-semibold mb-3 text-white">Always Available</h4>
+                        <p class="text-gray-400">No internet? No problem. Access your passwords anytime, anywhere, without relying on external services.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- App Mockup Section -->
+    <section class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="fade-in text-4xl md:text-5xl font-bold mb-6 text-white">Clean, Intuitive Interface</h2>
+                <p class="fade-in text-xl text-gray-400 max-w-3xl mx-auto">
+                    Designed for simplicity without sacrificing functionality
+                </p>
+            </div>
+            <div class="fade-in text-center">
+                <div class="mockup-glow bg-slate-800 rounded-3xl p-8 max-w-4xl mx-auto border border-purple-900/30">
+                    <div class="bg-slate-900 rounded-2xl p-6">
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-6 h-6 bg-purple-600 rounded-full"></div>
+                                <div class="w-6 h-6 bg-yellow-500 rounded-full"></div>
+                                <div class="w-6 h-6 bg-green-500 rounded-full"></div>
+                            </div>
+                            <div class="text-sm text-gray-400">Obscura Password Manager</div>
+                        </div>
+                        <div class="bg-slate-800 rounded-xl p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <h3 class="text-lg font-semibold text-white">My Vault</h3>
+                                <button class="px-4 py-2 bg-purple-600 text-white rounded-lg text-sm">+ Add Entry</button>
+                            </div>
+                            <div class="space-y-3">
+                                <div class="flex items-center justify-between p-3 bg-slate-700 rounded-lg">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white text-sm font-bold">G</div>
+                                        <div>
+                                            <div class="text-white font-medium">Gmail</div>
+                                            <div class="text-gray-400 text-sm">user@gmail.com</div>
+                                        </div>
+                                    </div>
+                                    <div class="text-gray-400">***************</div>
+                                </div>
+                                <div class="flex items-center justify-between p-3 bg-slate-700 rounded-lg">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="w-8 h-8 bg-purple-600 rounded-lg flex items-center justify-center text-white text-sm font-bold">G</div>
+                                        <div>
+                                            <div class="text-white font-medium">GitHub</div>
+                                            <div class="text-gray-400 text-sm">username</div>
+                                        </div>
+                                    </div>
+                                    <div class="text-gray-400">***************</div>
+                                </div>
+                                <div class="flex items-center justify-between p-3 bg-slate-700 rounded-lg">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="w-8 h-8 bg-red-600 rounded-lg flex items-center justify-center text-white text-sm font-bold">N</div>
+                                        <div>
+                                            <div class="text-white font-medium">Netflix</div>
+                                            <div class="text-gray-400 text-sm">streaming@email.com</div>
+                                        </div>
+                                    </div>
+                                    <div class="text-gray-400">***************</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section id="download" class="py-20 bg-slate-900/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="fade-in text-4xl md:text-5xl font-bold mb-6 text-white">Coming soon! Obscura</h2>
+                <p class="fade-in text-xl text-gray-400 max-w-3xl mx-auto">
+                    Choose your platform and start securing your digital life today
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="download-card slide-in-left bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 text-center">
+                    <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-700 rounded-xl mx-auto mb-6 flex items-center justify-center">
+                        <svg class="w-8 h-8 text-white" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4 text-white">Windows</h3>
+                    <p class="text-gray-400 mb-6">Windows 10/11 compatible</p>
+                    <a href="#" class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-purple-600 to-purple-700 text-white rounded-lg hover:from-purple-700 hover:to-purple-800 transition-all duration-300">
+                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                        </svg>
+                        Coming soon!
+                    </a>
+                </div>
+
+                <div class="download-card fade-in bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 text-center">
+                    <div class="w-16 h-16 bg-gradient-to-br from-gray-600 to-gray-800 rounded-xl mx-auto mb-6 flex items-center justify-center">
+                        <svg class="w-8 h-8 text-white" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.405.042-3.441.219-.937 1.404-5.956 1.404-5.956s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.688 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 01.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.888-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.357-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24.009 12.017 24c6.624 0 11.99-5.367 11.99-11.988C24.007 5.367 18.641.001 12.017.001z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4 text-white">macOS</h3>
+                    <p class="text-gray-400 mb-6">macOS 10.15+ compatible</p>
+                    <a href="#" class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-purple-600 to-purple-700 text-white rounded-lg hover:from-purple-700 hover:to-purple-800 transition-all duration-300">
+                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                        </svg>
+                        Coming soon!
+                    </a>
+                </div>
+
+                <div class="download-card slide-in-right bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 text-center">
+                    <div class="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-600 rounded-xl mx-auto mb-6 flex items-center justify-center">
+                        <svg class="w-8 h-8 text-white" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12.504 0C5.625 0-.001 5.625-.001 12.504c0 4.833 2.757 9.036 6.795 11.125-.092-.8-.175-2.025.036-2.904.192-.8 1.242-5.259 1.242-5.259s-.317-.634-.317-1.57c0-1.471.854-2.567 1.914-2.567.902 0 1.338.677 1.338 1.488 0 .907-.578 2.262-.876 3.515-.249 1.053.529 1.912 1.569 1.912 1.881 0 3.33-1.984 3.33-4.851 0-2.538-1.821-4.31-4.42-4.31-3.016 0-4.787 2.262-4.787 4.602 0 .911.35 1.887.787 2.416.087.105.099.196.074.305-.08.33-.258 1.045-.294 1.193-.047.189-.153.229-.354.138-1.325-.615-2.154-2.549-2.154-4.103 0-3.342 2.431-6.41 7.009-6.41 3.68 0 6.54 2.622 6.54 6.117 0 3.651-2.301 6.588-5.493 6.588-1.072 0-2.083-.558-2.428-1.225l-.661 2.52c-.238.923-.883 2.077-1.316 2.781C10.806 23.731 11.636 24 12.504 24c6.878 0 12.496-5.618 12.496-12.496C24.999 5.618 19.382.001 12.504.001z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4 text-white">Linux</h3>
+                    <p class="text-gray-400 mb-6">Ubuntu, Fedora, Arch supported</p>
+                    <a href="#" class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-purple-600 to-purple-700 text-white rounded-lg hover:from-purple-700 hover:to-purple-800 transition-all duration-300">
+                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                        </svg>
+                        Coming soon!
+                    </a>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <p class="fade-in text-gray-400 mb-4">All Coming soon!s are digitally signed and verified for security</p>
+                <div class="fade-in flex justify-center space-x-6 text-sm text-gray-500">
+                    <span>✓ Virus Free</span>
+                    <span>✓ Code Signed</span>
+                    <span>✓ Open Source</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="fade-in text-4xl md:text-5xl font-bold mb-6 text-white">Our Philosophy</h2>
+                    <p class="fade-in text-xl text-gray-400">
+                        Privacy isn't a feature—it's a fundamental right.
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-12 items-center mb-16">
+                    <div class="slide-in-left">
+                        <h3 class="text-2xl md:text-3xl font-bold mb-6 text-white">Built for Privacy by Design</h3>
+                        <p class="text-gray-400 mb-4 leading-relaxed">
+                            In a world where your personal data is constantly harvested, sold, and compromised, Obscura takes a different approach. We believe that your passwords—the keys to your digital life—should never leave your control.
+                        </p>
+                        <p class="text-gray-400 mb-4 leading-relaxed">
+                            That's why Obscura operates entirely offline. No cloud sync, no server connections, no data collection. Your encrypted vault exists only on your devices, protected by cryptography that even we can't break.
+                        </p>
+                        <p class="text-gray-400 leading-relaxed">
+                            We're not just building a password manager—we're building a future where privacy is the default, not an afterthought.
+                        </p>
+                    </div>
+                    <div class="slide-in-right">
+                        <div class="bg-gradient-to-br from-purple-900/30 to-purple-800/30 rounded-3xl p-8 border border-purple-700/50">
+                            <div class="text-center mb-6">
+                                <div class="w-20 h-20 bg-gradient-to-br from-purple-500 to-purple-700 rounded-2xl mx-auto flex items-center justify-center">
+                                    <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                                </div>
+                            </div>
+                            <h4 class="text-xl font-semibold mb-4 text-white text-center">Our Promise</h4>
+                            <ul class="space-y-3 text-gray-300">
+                                <li class="flex items-start space-x-3">
+                                    <svg class="w-5 h-5 text-purple-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                    </svg>
+                                    <span>Never collect your personal data</span>
+                                </li>
+                                <li class="flex items-start space-x-3">
+                                    <svg class="w-5 h-5 text-purple-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                    </svg>
+                                    <span>Keep all code open source</span>
+                                </li>
+                                <li class="flex items-start space-x-3">
+                                    <svg class="w-5 h-5 text-purple-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                    </svg>
+                                    <span>Maintain offline-first architecture</span>
+                                </li>
+                                <li class="flex items-start space-x-3">
+                                    <svg class="w-5 h-5 text-purple-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                    </svg>
+                                    <span>Put user privacy above profit</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center fade-in">
+                    <div class="bg-slate-800/50 backdrop-blur-sm rounded-3xl p-8 md:p-12 border border-purple-900/30">
+                        <h3 class="text-2xl md:text-3xl font-bold mb-6 text-white">Join the Privacy Revolution</h3>
+                        <p class="text-lg text-gray-400 mb-8 max-w-3xl mx-auto">
+                            Every Coming soon! of Obscura is a vote for a more private, secure internet. Help us prove that privacy-focused software can thrive in a surveillance economy.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                            <a href="#download" class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-purple-600 to-purple-700 text-white rounded-full hover:from-purple-700 hover:to-purple-800 transition-all duration-300 transform hover:scale-105">
+                                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                                </svg>
+                                Coming soon! 
+                            </a>
+                            <a href="https://github.com/007169" class="inline-flex items-center px-8 py-4 border border-purple-600 text-purple-400 rounded-full hover:bg-purple-600 hover:text-white transition-all duration-300">
+                                <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                </svg>
+                                View Source
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bug Report Section -->
+    <section id="bug-report" class="py-20 bg-slate-900/50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="fade-in text-4xl md:text-5xl font-bold mb-6 text-white">Report a Bug</h2>
+                <p class="fade-in text-xl text-gray-400">
+                    Help us improve Obscura by reporting issues or suggesting features
+                </p>
+            </div>
+
+            <div class="bg-slate-800/50 backdrop-blur-sm rounded-3xl p-8 md:p-12 border border-purple-900/30">
+                <form class="space-y-6">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="slide-in-left">
+                            <label for="name" class="block text-sm font-medium text-gray-300 mb-2">Name</label>
+                            <input type="text" id="name" name="name" class="w-full px-4 py-3 bg-slate-700 border border-slate-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all duration-300" placeholder="Your name">
+                        </div>
+                        <div class="slide-in-right">
+                            <label for="email" class="block text-sm font-medium text-gray-300 mb-2">Email</label>
+                            <input type="email" id="email" name="email" class="w-full px-4 py-3 bg-slate-700 border border-slate-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all duration-300" placeholder="your@email.com">
+                        </div>
+                    </div>
+
+                    <div class="fade-in">
+                        <label for="issue-type" class="block text-sm font-medium text-gray-300 mb-2">Issue Type</label>
+                        <select id="issue-type" name="issue-type" class="w-full px-4 py-3 bg-slate-700 border border-slate-600 rounded-lg text-white focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all duration-300">
+                            <option value="">Select issue type</option>
+                            <option value="bug">Bug Report</option>
+                            <option value="feature">Feature Request</option>
+                            <option value="security">Security Issue</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="fade-in">
+                        <label for="platform" class="block text-sm font-medium text-gray-300 mb-2">Platform</label>
+                        <select id="platform" name="platform" class="w-full px-4 py-3 bg-slate-700 border border-slate-600 rounded-lg text-white focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all duration-300">
+                            <option value="">Select platform</option>
+                            <option value="windows">Windows</option>
+                            <option value="macos">macOS</option>
+                            <option value="linux">Linux</option>
+                        </select>
+                    </div>
+
+                    <div class="fade-in">
+                        <label for="subject" class="block text-sm font-medium text-gray-300 mb-2">Subject</label>
+                        <input type="text" id="subject" name="subject" class="w-full px-4 py-3 bg-slate-700 border border-slate-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all duration-300" placeholder="Brief description of the issue">
+                    </div>
+
+                    <div class="fade-in">
+                        <label for="description" class="block text-sm font-medium text-gray-300 mb-2">Description</label>
+                        <textarea id="description" name="description" rows="6" class="w-full px-4 py-3 bg-slate-700 border border-slate-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all duration-300 resize-none" placeholder="Please provide detailed information about the issue, including steps to reproduce..."></textarea>
+                    </div>
+
+                    <div class="fade-in text-center">
+                        <button type="submit" class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-purple-600 to-purple-700 text-white rounded-full hover:from-purple-700 hover:to-purple-800 transition-all duration-300 transform hover:scale-105 purple-glow">
+                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+                            </svg>
+                            Submit Report
+                        </button>
+                    </div>
+                </form>
+
+                <div class="mt-8 pt-8 border-t border-slate-700">
+                    <div class="text-center">
+                        <p class="text-gray-400 mb-4">For urgent security issues, contact us directly:</p>
+                        <a href="mailto:security@obscura.app" class="inline-flex items-center text-purple-400 hover:text-purple-300 transition-colors duration-300">
+                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                            </svg>
+                            security@obscura.app
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-16 bg-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="md:col-span-2">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-700 rounded-xl flex items-center justify-center">
+                            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                            </svg>
+                        </div>
+                        <span class="text-3xl font-bold text-white">Obscura</span>
+                    </div>
+                    <p class="text-gray-400 mb-6 max-w-md leading-relaxed">
+                        The offline password manager that puts your privacy first. Your passwords, your device, your control.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="https://github.com/obscura-password-manager" class="w-12 h-12 bg-slate-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-purple-600 transition-all duration-300">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                        </a>
+                        <a href="https://twitter.com/obscurapassword" class="w-12 h-12 bg-slate-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-purple-600 transition-all duration-300">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold text-white mb-4">Product</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#features" class="text-gray-400 hover:text-white transition-colors">Features</a></li>
+                        <li><a href="#download" class="text-gray-400 hover:text-white transition-colors">Coming soon!</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition-colors">About</a></li>
+                        <li><a href="#bug-report" class="text-gray-400 hover:text-white transition-colors">Report Bug</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold text-white mb-4">Legal</h3>
+                    <ul class="space-y-2">
+                        <li><a href="policies/privacy-policy.html" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="policies/terms-of-use.html" class="text-gray-400 hover:text-white transition-colors">Terms of Use</a></li>
+                        <li><a href="policies/license.html" class="text-gray-400 hover:text-white transition-colors">License</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-slate-800 mt-12 pt-8 text-center">
+                <p class="text-gray-400">&copy; 2025 Obscura. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+   <script src="js/main.js"></script>
+   <script src="js/animations.js"></script>
+
+</body>
+</html>
